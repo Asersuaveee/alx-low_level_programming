@@ -1,41 +1,55 @@
-#include "3-calc.h"
+#include <stdio.h>
+#include "function_pointers.h"
 
 /**
- * main - the starting function
- * @argc: the number of passed arguments including the program's name
- * @argv: an array whose elements are the passed arguments
+ * is_98 - check if a number is equal to 98
+ * @elem: the integer to check
+ *
+ * Return: 0 if false, something else otherwise.
+ */
+int is_98(int elem)
+{
+    return (98 == elem);
+}
+
+/**
+ * is_strictly_positive - check if a number is greater than 0
+ * @elem: the integer to check
+ *
+ * Return: 0 if false, something else otherwise.
+ */
+int is_strictly_positive(int elem)
+{
+    return (elem > 0);
+}
+
+
+/**
+ * abs_is_98 - check if the absolute value of a number is 98
+ * @elem: the integer to check
+ *
+ * Return: 0 if false, something else otherwise.
+ */
+int abs_is_98(int elem)
+{
+    return (elem == 98 || -elem == 98);
+}
+
+/**
+ * main - check the code
  *
  * Return: Always 0.
  */
-int main(int argc, char **argv)
+int main(void)
 {
-	int x, y;
-	char o;
-	int (*op_func)(int, int);
+    int array[20] = {0, -98, 98, 402, 1024, 4096, -1024, -98, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 98};
+    int index;
 
-	if (argc != 4)
-	{
-		printf("Error\n");
-		return (98);
-	}
-
-	x = atoi(argv[1]);
-	y = atoi(argv[3]);
-	o = *argv[2];
-
-	op_func = get_op_func(argv[2]);
-
-	if (!op_func)
-	{
-		printf("Error\n");
-		return (99);
-	}
-
-	if ((o == '/' || o == '%') && y == 0)
-	{
-		printf("Error\n");
-		return (100);
-	}
-	printf("%d\n", op_func(x, y));
-	return (0);
+    index = int_index(array, 20, is_98);
+    printf("%d\n", index);
+    index = int_index(array, 20, abs_is_98);
+    printf("%d\n", index);
+    index = int_index(array, 20, is_strictly_positive);
+    printf("%d\n", index);
+    return (0);
 }
