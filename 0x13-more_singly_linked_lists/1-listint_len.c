@@ -14,7 +14,7 @@ size_t count;
 
 	for (count = 0; h != NULL; count++)
 	{
-		h = (*h).next;
+	  (h = (*h).next);
 	}
 	return (count);
 }
