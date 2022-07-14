@@ -1,6 +1,6 @@
 #ifndef LISTS_H
 #define LISTS_H
-11;rgb:0000/0000/0000#include <stdio.h>
+#include <stdio.h>
 #include <stdarg.h>
 
 int _putchar(char c);
@@ -38,4 +38,4 @@ size_t print_listint_safe(const listint_t *head);
 size_t free_listint_safe(listint_t **h);
 listint_t *find_listint_loop(listint_t *head);
 
-#endif~
+#endif
